@@ -9,8 +9,7 @@ public class QVetWatcher {
 
     @Test
     public void testOpenFile() {
-        URL testQVetResourceDB = this.getClass().getClassLoader().getResource("databases/qvet-test-empty.mdb");
-        MdbQVetWatcher mdbWatcher = new MdbQVetWatcher(testQVetResourceDB.getFile());
+        MdbQVetWatcher qWatcher = new MdbQVetWatcher("q.mdb");
         System.out.println("Succesfully read");
     }
 }
