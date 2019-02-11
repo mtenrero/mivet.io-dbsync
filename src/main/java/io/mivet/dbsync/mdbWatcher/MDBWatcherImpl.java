@@ -12,8 +12,8 @@ public class MDBWatcherImpl implements mdbWatcher {
 
     private final static Logger LOGGER = Logger.getLogger(MDBWatcherImpl.class.getName());
 
-    private String filePath;
-    private Database mdbDatabase;
+    protected String filePath;
+    protected Database mdbDatabase;
 
     MDBWatcherImpl(String filePath) {
         this.filePath = filePath;
@@ -30,5 +30,9 @@ public class MDBWatcherImpl implements mdbWatcher {
             LOGGER.log(Level.SEVERE, "The MDB filepath is not valid!");
             e.printStackTrace();
         }
+    }
+
+    private Database getDatabase() {
+        return mdbDatabase;
     }
 }
