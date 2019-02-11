@@ -5,15 +5,18 @@ import com.healthmarketscience.jackcess.DatabaseBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MDBWatcherImpl implements mdbWatcher {
+public abstract class MDBWatcherImpl implements mdbWatcher {
 
     private final static Logger LOGGER = Logger.getLogger(MDBWatcherImpl.class.getName());
 
     protected String filePath;
     protected Database mdbDatabase;
+
+    protected HashMap<String,String> hashedDB;
 
     MDBWatcherImpl(String filePath) {
         this.filePath = filePath;
@@ -35,4 +38,7 @@ public class MDBWatcherImpl implements mdbWatcher {
     private Database getDatabase() {
         return mdbDatabase;
     }
+
+    /** Loads all the DB contents hashed into the memory for content change detection */
+    abstract void loadHashDBToMemory();
 }

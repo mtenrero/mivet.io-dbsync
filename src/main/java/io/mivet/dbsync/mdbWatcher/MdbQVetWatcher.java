@@ -7,4 +7,9 @@ public class MdbQVetWatcher extends MDBWatcherImpl implements mdbWatcher {
     public MdbQVetWatcher(String filepath) {
         super(filepath);
     }
+
+    @Override
+    void loadHashDBToMemory() {
+
+    }
 }
