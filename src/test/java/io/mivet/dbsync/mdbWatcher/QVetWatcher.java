@@ -4,10 +4,12 @@ import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+
+import com.healthmarketscience.jackcess.Table;
 
 public class QVetWatcher {
 
@@ -33,5 +35,17 @@ public class QVetWatcher {
     public void testOpenFile() {
         MDBWatcherImpl qWatcher = openMdbWatcher();
         assertNotNull(qWatcher.mdbDatabase);   
+    }
+
+    @Test
+    public void testReadTables() {
+        MDBWatcherImpl qWatcher = openMdbWatcher();
+        Table table;
+        try {
+            table = qWatcher.mdbDatabase.getTable("Clientes");
+            assertTrue(table.getColumnCount() > 0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
